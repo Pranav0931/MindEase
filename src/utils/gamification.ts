@@ -209,11 +209,11 @@ export const completeHabit = (habitId: string): void => {
         .sort((a, b) => b.getTime() - a.getTime());
       
       let streak = 0;
-      const today = new Date();
+      const todayDate = new Date();
       
       for (let i = 0; i < sortedDates.length; i++) {
-        const expectedDate = new Date(today);
-        expectedDate.setDate(today.getDate() - i);
+        const expectedDate = new Date(todayDate);
+        expectedDate.setDate(todayDate.getDate() - i);
         
         if (sortedDates[i].toDateString() === expectedDate.toDateString()) {
           streak++;

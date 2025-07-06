@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Star, Lock } from 'lucide-react';
-import { Achievement, getUserStats } from '@/utils/gamification';
+import { Achievement } from '@/types/gamification';
+import { getUserStats } from '@/utils/gamification';
 
 const AchievementBadges: React.FC = () => {
   const [achievements, setAchievements] = useState<Achievement[]>([]);
