@@ -5,7 +5,12 @@ const MOOD_STORAGE_KEY = 'mindease_mood_entries';
 
 export const saveMoodEntry = (entry: MoodEntry): void => {
   const existingEntries = getMoodEntries();
-  const updatedEntries = [entry, ...existingEntries];
+  // Prevent duplicate entries for the same day
+  const today = new Date(entry.timestamp).toDateString();
+  const filteredEntries = existingEntries.filter(e => 
+    new Date(e.timestamp).toDateString() !== today
+  );
+  const updatedEntries = [entry, ...filteredEntries];
   localStorage.setItem(MOOD_STORAGE_KEY, JSON.stringify(updatedEntries));
 };
 
